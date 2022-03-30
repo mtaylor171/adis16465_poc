@@ -79,10 +79,10 @@ public:
   // Constructor with configurable CS, data ready, and HW reset pins
 
   // ADIS16470(int CS, int DR, int RST, int MOSI, int MISO, int CLK);
-  ADIS16470(int CS, int DR, int RST);
+  ADIS16465(int CS, int DR, int RST);
 
   // Destructor
-  ~ADIS16470();
+  ~ADIS16465();
 
   // Performs hardware reset by sending pin 8 low on the DUT for n milliseconds
   int resetDUT(uint8_t ms);
