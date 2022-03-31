@@ -8,8 +8,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define ADIS16465_h
-
 // User Register Memory Map from Table 6
 #define DIAG_STAT   	0x02  //Diagnostic and operational status
 #define X_GYRO_LOW  	0x04  //X-axis gyroscope output, lower word
