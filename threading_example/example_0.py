@@ -40,4 +40,6 @@ def data_handle():
 			event.set()
 			break
 
+data_handle()
+
 t1.join()
