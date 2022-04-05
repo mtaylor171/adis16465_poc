@@ -18,6 +18,7 @@ def data_handle(data):
 			if((i % 3) == 0):
 				data[1] = i
 				data[0] = 1
+		break
 
 
 data = [0, 0]
@@ -33,7 +34,6 @@ def spi_coms():
 				data[0] = 0
 			if event.is_set():
 				break
-			break
 		except KeyboardInterrupt:
 			event.set()
 			break
