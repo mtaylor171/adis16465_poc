@@ -88,6 +88,7 @@ def adis16465_setup():
 	time.sleep(.5)  # give everything time to start up
 
 	spi_write_reg(MSC_CTRL, 0xC1, 1)   # enable data ready, set polarity
+	spi_read_reg(2)
 
 # vibration sensor class
 
