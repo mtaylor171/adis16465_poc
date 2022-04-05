@@ -106,6 +106,7 @@ def adis16465_setup():
 
 
 if __name__ == "__main__":
+	print("Progarm Started")
 	adis16465_setup()
 	while(1):
 		if input("Press 1 to read SN: ") == 1:
