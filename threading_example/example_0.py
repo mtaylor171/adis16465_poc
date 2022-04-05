@@ -28,8 +28,9 @@ t1.start()
 def spi_coms():
 	while(True):
 		try:
-			if(data[0] ==1):
+			if(data[0] == 1):
 				print("Data received: ", data[1])
+				data[0] = 0
 			if event.is_set():
 				break
 		except KeyboardInterrupt:
