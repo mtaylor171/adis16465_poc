@@ -7,7 +7,7 @@ DR = 0
 glob_var = 0
 
 def spi_coms():
-	while(true):
+	while(True):
 		while(DR != 1):
 			pass
 		print("Data received: ", glob_var)
