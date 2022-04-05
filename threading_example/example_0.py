@@ -13,6 +13,7 @@ def spi_coms(DR, glob_var):
 	#global DR
 	#global glob_var
 	while(True):
+		print(glob_var)
 		if(DR ==1):
 			print("Data received: ", glob_var)
 		if event.is_set():
@@ -30,7 +31,7 @@ def data_handle():
 	while(True):
 		try:
 			DR = 0
-			for i in range(0,27):
+			for i in range(0,4):
 				print(i)
 				time.sleep(0.5)
 				if(i % 3 == 0):
@@ -39,6 +40,7 @@ def data_handle():
 		except KeyboardInterrupt:
 			event.set()
 			break
+		break
 
 data_handle()
 
