@@ -18,7 +18,7 @@ def data_handle(DR, glob_var):
 			if(i % 3 == 0):
 				glob_var = i
 				DR = 1
-				time.sleep(0.5)
+				return DR, glob_var
 
 
 DR = 0
