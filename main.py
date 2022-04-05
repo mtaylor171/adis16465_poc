@@ -77,7 +77,7 @@ def spi_read_reg(n):
 
 def adis16465_setup():
 	spi = spidev.SpiDev()
-	spi.open(bus, device)
+	spi.open(0, 0)
 	spi.max_speed_hz = 1000000  # Max spi speed 1MHz
 	spi.mode = 0b11     # spi mode 3 (CPOL = 1, CPHA = 1)
 
