@@ -15,7 +15,7 @@ def spi_coms(DR, glob_var):
 			print("Data received: ", glob_var)
 
 
-def data_handle():
+def data_handle(DR, glob_var):
 	global DR
 	global glob_var
 	for i in range(0,27):
@@ -32,7 +32,7 @@ def data_handle():
 
 
 t1 = threading.Thread(target=spi_coms, args = (DR, glob_var, ))
-t2 = threading.Thread(target=data_handle)
+t2 = threading.Thread(target=data_handle, args = (DR, glob_var, ))
 
 
 t1.start()
