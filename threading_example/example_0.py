@@ -9,7 +9,7 @@ import numpy as np
 
 event = Event()
 
-def data_handle():
+def data_handle(DR, glob_var):
 	while(True):
 		DR = 0
 		for i in range(0,4):
