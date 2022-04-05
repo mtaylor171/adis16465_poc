@@ -89,8 +89,8 @@ def adis16465_setup():
 	spi.lsbfirst = False
 	time.sleep(.5)  # give everything time to start up
 
-	spi_write_reg(MSC_CTRL, 0xC1, 1)   # enable data ready, set polarity
-	spi_read_reg(2)
+	#spi_write_reg(MSC_CTRL, 0xC1, 1)   # enable data ready, set polarity
+	#spi_read_reg(2)
 
 # vibration sensor class
 
@@ -118,7 +118,8 @@ if __name__ == "__main__":
 	while(1):
 		try:
 			if input("Press 1 to read SN: ") == "1":
-				spi_write_reg(PROD_ID, 0x00, 0)
+				#spi_write_reg(PROD_ID, 0x00, 0)
+				spi.writebytes([0x72, 0x00])
 				time.sleep(0.5)
 				s_num = spi_read_reg(4)
 				print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
