@@ -10,9 +10,8 @@ def spi_coms():
 	global DR
 	global glob_var
 	while(True):
-		while(DR != 1):
-			pass
-		print("Data received: ", glob_var)
+		if(DR ==1):
+			print("Data received: ", glob_var)
 
 
 def data_handle():
