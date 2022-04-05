@@ -18,12 +18,15 @@ def spi_coms(DR, glob_var):
 		if event.is_set():
 			break
 
+DR = 0
+glob_var = 0
+
 t1 = Thread(target=spi_coms, args = (DR, glob_var, ))
 t1.start()
 
 def data_handle():
-	#global DR
-	#global glob_var
+	global DR
+	global glob_var
 	while(True):
 		try:
 			DR = 0
