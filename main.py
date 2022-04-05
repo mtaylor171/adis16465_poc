@@ -74,7 +74,7 @@ def spi_write_reg(reg, command, r_w):
 	spi.writebytes(spi_words)
 
 def spi_read_reg(n):
-	spi.readbytes(n)
+	return spi.readbytes(n)
 	# Possibly add bytes into an array here, then return
 
 
@@ -111,9 +111,12 @@ if __name__ == "__main__":
 	print("Progarm Started")
 	adis16465_setup()
 	while(1):
-		if input("Press 1 to read SN: ") == 1:
-			spi_write_reg(0x74, 0x00, 0)
-			time.sleep(0.5)
-			s_num = spi_read_reg(2)
-			print("*SPI TEST* Serial Number: ", s_num)
+		try:
+			if input("Press 1 to read SN: ") == "1":
+				spi_write_reg(0x74, 0x00, 0)
+				time.sleep(0.5)
+				s_num = spi_read_reg(2)
+				print("*SPI TEST* Serial Number: ", s_num)
+			except KeyboardInterrupt:
+				break
 	
