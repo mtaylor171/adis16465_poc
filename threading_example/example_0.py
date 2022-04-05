@@ -7,8 +7,9 @@ DR = 0
 glob_var = 0
 
 def spi_coms():
-	while(DR != 1)
-	print("Data received: ", glob_var)
+	while(true):
+		while(DR != 1)
+		print("Data received: ", glob_var)
 
 
 def data_handle():
