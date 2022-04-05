@@ -21,9 +21,10 @@ def data_handle():
 	for i in range(0,27):
 		print("thread2: ", i)
 		time.sleep(0.5)
-		if i % 3 == 0:
+		if(i % 3 == 0):
 			glob_var = i
 			DR = 1
+			print("DR = 1")
 		DR = 0
 
 
