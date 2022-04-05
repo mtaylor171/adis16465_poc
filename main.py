@@ -84,7 +84,7 @@ def adis16465_setup():
 	spi.open(0, 0)
 	spi.max_speed_hz = 1000000  # Max spi speed 1MHz
 	spi.mode = 0b11     # spi mode 3 (CPOL = 1, CPHA = 1)
-
+	spi.lsbfirst = False
 	time.sleep(.5)  # give everything time to start up
 
 	spi_write_reg(MSC_CTRL, 0xC1, 1)   # enable data ready, set polarity
@@ -120,5 +120,6 @@ if __name__ == "__main__":
 				s_num = spi_read_reg(4)
 				print("*SPI TEST* Serial Number: ", s_num)
 		except KeyboardInterrupt:
+			spi.close()
 			break
 	
