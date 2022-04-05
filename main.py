@@ -74,7 +74,9 @@ def spi_write_reg(reg, command, r_w):
 	spi.writebytes(spi_words)
 
 def spi_read_reg(n):
-	return spi.readbytes(n)
+	spi_recv = 0x00
+	spi_recv = spi.readbytes(n)
+	return spi_recv
 	# Possibly add bytes into an array here, then return
 
 
