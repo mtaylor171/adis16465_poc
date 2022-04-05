@@ -1,11 +1,13 @@
 import RPi.GPIO as GPIO
 import time
-import threading
+from threading import Thread, Event
 import numpy as np
 
 
-DR = 0
-glob_var = 0
+#DR = 0
+#glob_var = 0
+
+event = Event()
 
 def spi_coms(DR, glob_var):
 	#global DR
@@ -13,30 +15,25 @@ def spi_coms(DR, glob_var):
 	while(True):
 		if(DR ==1):
 			print("Data received: ", glob_var)
+		if event.is_set():
+			break
 
-
-def data_handle(DR, glob_var):
-	global DR
-	global glob_var
-	for i in range(0,27):
-		print("thread2: ", i)
-		time.sleep(0.5)
-		if(i % 3 == 0):
-			glob_var = i
-			DR = 1
-			print("DR = ", DR)
-		DR = 0
-
-
-
-
-
-t1 = threading.Thread(target=spi_coms, args = (DR, glob_var, ))
-t2 = threading.Thread(target=data_handle, args = (DR, glob_var, ))
-
-
+t1 = Thread(target=spi_coms, args = (DR, glob_var, ))
 t1.start()
-t2.start()
+
+def data_handle():
+	#global DR
+	#global glob_var
+	try:
+		DR = 0
+		for i in range(0,27):
+			print(i)
+			time.sleep(0.5)
+			if(i % 3 == 0):
+				glob_var = i
+				DR = 1
+	except KeyboardInterrupt:
+		event.set()
+		break
 
 t1.join()
-t2.join()
