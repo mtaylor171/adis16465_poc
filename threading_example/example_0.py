@@ -33,6 +33,7 @@ def spi_coms():
 				data[0] = 0
 			if event.is_set():
 				break
+			break
 		except KeyboardInterrupt:
 			event.set()
 			break
