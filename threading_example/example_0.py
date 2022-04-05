@@ -12,10 +12,10 @@ event = Event()
 def data_handle(data):
 	while(True):
 		data[0] = 0
-		for i in range(0,4):
+		for i in range(0,27):
 			print(i)
 			time.sleep(0.5)
-			if(i % 3 == 0):
+			if((i % 3) == 0):
 				data[1] = i
 				data[0] = 1
 
