@@ -70,7 +70,8 @@ FLSHCNT_HIGH=   0x7E  #Flash update count, upper word
 def spi_write_reg(reg, command, r_w):
 	spi_word0 = reg | (r_w << 7)        # adding write bit if necessary
 	spi_word1 = command
-	spi.writebytes(spi_word0, spi_word1)
+	spi_words = [spi_word0, spi_word1]
+	spi.writebytes(spi_words)
 
 def spi_read_reg(n):
 	spi.readbytes(n)
