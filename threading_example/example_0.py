@@ -7,6 +7,8 @@ DR = 0
 glob_var = 0
 
 def spi_coms():
+	global DR
+	global glob_var
 	while(True):
 		while(DR != 1):
 			pass
@@ -14,6 +16,8 @@ def spi_coms():
 
 
 def data_handle():
+	global DR
+	global glob_var
 	for i in range(0,27):
 		#print("thread2: ", i)
 		time.sleep(0.5)
