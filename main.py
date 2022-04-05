@@ -117,6 +117,6 @@ if __name__ == "__main__":
 				time.sleep(0.5)
 				s_num = spi_read_reg(2)
 				print("*SPI TEST* Serial Number: ", s_num)
-			except KeyboardInterrupt:
-				break
+		except KeyboardInterrupt:
+			break
 	
