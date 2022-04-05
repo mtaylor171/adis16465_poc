@@ -7,6 +7,8 @@ import time
 from threading import Thread, Event
 import numpy as np
 
+spi = spidev.SpiDev()
+
 # User Register Memory Map from Table 6
 DIAG_STAT=      0x02  #Diagnostic and operational status
 X_GYRO_LOW=     0x04  #X-axis gyroscope output, lower word
@@ -76,14 +78,13 @@ def spi_read_reg(n):
 
 
 def adis16465_setup():
-	spi = spidev.SpiDev()
 	spi.open(0, 0)
 	spi.max_speed_hz = 1000000  # Max spi speed 1MHz
 	spi.mode = 0b11     # spi mode 3 (CPOL = 1, CPHA = 1)
 
 	time.sleep(.5)  # give everything time to start up
 
-	spi_write_reg(MSC_CTRL, 0xC1)   # enable data ready, set polarity
+	spi_write_reg(MSC_CTRL, 0xC1, 1)   # enable data ready, set polarity
 
 # vibration sensor class
 
