@@ -16,15 +16,15 @@ def spi_coms(DR, glob_var):
 
 
 def data_handle():
-	#global DR
-	#global glob_var
+	global DR
+	global glob_var
 	for i in range(0,27):
 		print("thread2: ", i)
 		time.sleep(0.5)
 		if(i % 3 == 0):
 			glob_var = i
 			DR = 1
-			print("DR = 1")
+			print("DR = ", DR)
 		DR = 0
 
 
