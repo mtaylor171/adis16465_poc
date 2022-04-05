@@ -115,7 +115,7 @@ if __name__ == "__main__":
 	while(1):
 		try:
 			if input("Press 1 to read SN: ") == "1":
-				spi_write_reg(0x74, 0x00, 0)
+				spi_write_reg(PROD_ID, 0x00, 0)
 				time.sleep(0.5)
 				s_num = spi_read_reg(2)
 				print("*SPI TEST* Serial Number: ", s_num)
