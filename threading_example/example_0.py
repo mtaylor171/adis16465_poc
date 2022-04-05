@@ -37,10 +37,10 @@ def data_handle():
 				if(i % 3 == 0):
 					glob_var = i
 					DR = 1
+			break
 		except KeyboardInterrupt:
 			event.set()
 			break
-		break
 
 data_handle()
 
