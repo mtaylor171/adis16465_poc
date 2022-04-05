@@ -79,6 +79,8 @@ def spi_read_reg(n):
 	return spi_recv
 	# Possibly add bytes into an array here, then return
 
+def BytesToHex(Bytes):
+	return ''.join(["0x%02X " % x for x in Bytes]).strip() 
 
 def adis16465_setup():
 	spi.open(0, 0)
@@ -119,7 +121,7 @@ if __name__ == "__main__":
 				spi_write_reg(PROD_ID, 0x00, 0)
 				time.sleep(0.5)
 				s_num = spi_read_reg(4)
-				print("*SPI TEST* Serial Number: ", s_num)
+				print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
 		except KeyboardInterrupt:
 			spi.close()
 			break
