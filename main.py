@@ -119,7 +119,7 @@ if __name__ == "__main__":
 		try:
 			data_str = input("Enter SPI signal: ")
 			data = hex(int(data_str, 16))
-			print("hex data:", data)
+			print("hex data:", type(data))
 			spi.writebytes([(data & 0xFF), (data >> 4)])
 			time.sleep(0.5)
 			s_num = spi_read_reg(4)
