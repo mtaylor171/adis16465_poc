@@ -117,6 +117,19 @@ if __name__ == "__main__":
 	adis16465_setup()
 	while(1):
 		try:
+			data = hex(input("Enter SPI signal"))
+			spi.writebytes([data & 0xFF , data >> 4])
+			time.sleep(0.5)
+			s_num = spi_read_reg(4)
+			print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
+		except KeyboardInterrupt:
+			spi.close()
+			break
+
+
+'''
+	while(1):
+		try:
 			if input("Press 1 to read SN: ") == "1":
 				#spi_write_reg(PROD_ID, 0x00, 0)
 				spi.writebytes([0x72, 0x00])
@@ -126,4 +139,4 @@ if __name__ == "__main__":
 		except KeyboardInterrupt:
 			spi.close()
 			break
-	
+'''	
