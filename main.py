@@ -120,9 +120,9 @@ if __name__ == "__main__":
 		try:
 			data_str = input("Enter SPI signal: ")
 			data_int = int(data_str, 16)
-			data_sent = [hex(data_int & 0xFF), hex(data_int >> 4)]
+			data_sent = [hex(data_int >> 8), hex(data_int & 0xFF)]
 			print("Sending: ", data_sent)
-			spi.writebytes([(data_int & 0xFF), (data_int >> 4)])
+			spi.writebytes(data_sent)
 			time.sleep(0.5)
 			s_num = spi_read_reg(4)
 			print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
