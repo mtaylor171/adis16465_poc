@@ -121,7 +121,7 @@ if __name__ == "__main__":
 			data_str = input("Enter SPI signal: ")
 			data_int = int(data_str, 16)
 			data = hex(data_int)
-			print("int data:", type(data_int))
+			print("int data:", data_int)
 			print("hex data:", type(data))
 			spi.writebytes([(data & 0xFF), (data >> 4)])
 			time.sleep(0.5)
