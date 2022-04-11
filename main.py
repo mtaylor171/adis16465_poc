@@ -118,7 +118,7 @@ if __name__ == "__main__":
 	while(1):
 		try:
 			data = hex(int(input("Enter SPI signal:"), 16))
-			spi.writebytes([data & 0xFF , data >> 4])
+			spi.writebytes([(data & 0xFF), (data >> 4)])
 			time.sleep(0.5)
 			s_num = spi_read_reg(4)
 			print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
