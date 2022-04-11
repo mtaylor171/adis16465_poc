@@ -117,7 +117,7 @@ if __name__ == "__main__":
 	adis16465_setup()
 	while(1):
 		try:
-			data = hex(input("Enter SPI signal"))
+			data = hex(int(input("Enter SPI signal:"), 16))
 			spi.writebytes([data & 0xFF , data >> 4])
 			time.sleep(0.5)
 			s_num = spi_read_reg(4)
