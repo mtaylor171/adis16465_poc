@@ -120,6 +120,22 @@ def adis16465_setup():
 if __name__ == "__main__":
 	print("Progarm Started")
 	adis16465_setup()
+
+	while(1):
+		try:
+			#data_str = input("Enter SPI signal: ")
+			#data_int = int(data_str, 16)
+			#data_sent = [hex(data_int >> 8), hex(data_int & 0xFF)]
+			#print("Sending: ", data_sent)
+			#spi.writebytes([(data_int >> 8), (data_int & 0xFF)])
+			GPIO.wait_for_edge(22, GPIO.RISING, timeout = 5000)
+			s_num = spi_read_reg(2)
+			print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
+		except KeyboardInterrupt:
+			spi.close()
+			break
+
+'''
 	while(1):
 		try:
 			data_str = input("Enter SPI signal: ")
@@ -135,7 +151,7 @@ if __name__ == "__main__":
 			break
 
 
-'''
+
 	while(1):
 		try:
 			if input("Press 1 to read SN: ") == "1":
