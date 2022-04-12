@@ -77,7 +77,7 @@ def spi_write_reg(reg, command, r_w):
 
 def spi_read_reg(n):
 	spi_recv = [0x00, 0x00]
-	spi_recv = spi.xfer(0x00, 0x00)
+	spi_recv = spi.xfer([0x00, 0x00])
 	return spi_recv
 	# Possibly add bytes into an array here, then return
 
