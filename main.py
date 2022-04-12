@@ -9,6 +9,7 @@ import numpy as np
 import math
 
 spi = spidev.SpiDev()
+GPIO.setmode(GPIO.BOARD)
 
 # User Register Memory Map from Table 6
 DIAG_STAT=      0x02  #Diagnostic and operational status
@@ -76,7 +77,7 @@ def spi_write_reg(reg, command, r_w):
 
 def spi_read_reg(n):
 	spi_recv = [0x00, 0x00]
-	spi_recv = spi.readbytes(n)
+	spi_recv = spi.xfer(0x00, 0x00)
 	return spi_recv
 	# Possibly add bytes into an array here, then return
 
@@ -89,6 +90,9 @@ def adis16465_setup():
 	spi.mode = 0b11     # spi mode 3 (CPOL = 1, CPHA = 1)
 	spi.lsbfirst = False
 	time.sleep(.5)  # give everything time to start up
+
+	GPIO.setup(22, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+
 
 	#spi_write_reg(MSC_CTRL, 0xC1, 1)   # enable data ready, set polarity
 	#spi_read_reg(2)
@@ -123,8 +127,8 @@ if __name__ == "__main__":
 			data_sent = [hex(data_int >> 8), hex(data_int & 0xFF)]
 			print("Sending: ", data_sent)
 			spi.writebytes([(data_int >> 8), (data_int & 0xFF)])
-			time.sleep(0.000016)
-			s_num = spi_read_reg(4)
+			GPIO.wait_for_edge(22, GPIO.RISING, timeout = 5000)
+			s_num = spi_read_reg(2)
 			print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
 		except KeyboardInterrupt:
 			spi.close()
