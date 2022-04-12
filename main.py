@@ -84,7 +84,7 @@ def BytesToHex(Bytes):
 	return ''.join(["0x%02X " % x for x in Bytes]).strip() 
 
 def adis16465_setup():
-	spi.open(0, 1)
+	spi.open(0, 0)
 	spi.max_speed_hz = 100000  # Max spi speed 1MHz
 	spi.mode = 0b11     # spi mode 3 (CPOL = 1, CPHA = 1)
 	spi.lsbfirst = False
