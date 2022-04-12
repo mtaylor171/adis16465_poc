@@ -123,6 +123,7 @@ if __name__ == "__main__":
 			data_sent = [hex(data_int >> 8), hex(data_int & 0xFF)]
 			print("Sending: ", data_sent)
 			print(spi.xfer([(data_int >> 8), (data_int & 0xFF)]))
+			print(spi.xfer([0x00, 0x00]))
 			time.sleep(0.5)
 			s_num = spi_read_reg(4)
 			print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
