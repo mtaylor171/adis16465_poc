@@ -122,8 +122,8 @@ if __name__ == "__main__":
 			data_int = int(data_str, 16)
 			data_sent = [hex(data_int >> 8), hex(data_int & 0xFF)]
 			print("Sending: ", data_sent)
-			print(spi.writebytes([(data_int >> 8), (data_int & 0xFF)]))
-			time.sleep(0.5)
+			spi.writebytes([(data_int >> 8), (data_int & 0xFF)])
+			time.sleep(0.005)
 			s_num = spi_read_reg(4)
 			print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
 		except KeyboardInterrupt:
