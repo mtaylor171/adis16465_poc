@@ -127,7 +127,7 @@ if __name__ == "__main__":
 			#data_int = int(data_str, 16)
 			#data_sent = [hex(data_int >> 8), hex(data_int & 0xFF)]
 			#print("Sending: ", data_sent)
-			#spi.writebytes([(data_int >> 8), (data_int & 0xFF)])
+			spi.writebytes([0x72, 0x00])
 			GPIO.wait_for_edge(22, GPIO.RISING, timeout = 5000)
 			s_num = spi_read_reg(2)
 			print("*SPI TEST* Serial Number: ", BytesToHex(s_num))
